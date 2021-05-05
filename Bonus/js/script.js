@@ -10,6 +10,7 @@
 var numeriComputer = [];
 var numeriUtente = [];
 var gameOver = false;
+
 var n = 100;
 var x = 16;
 
@@ -32,6 +33,18 @@ function isNumberInArray(number, array){
 }
 //  /FUNZIONI 
 
+//seleziona la difficoltà
+var difficulty =parseInt(prompt("Inserisci la difficoltà. [0: facile - 1:media - 2: difficile"))
+
+switch (difficulty) {
+    case '0':
+        n = 100;
+    case '1':
+        n = 80;
+    case '2':
+        n = 50;
+}
+
 // genera x numeri casuali unici e inseriscili in un array
 for (var i=0; i<x; i++){
     var newNumberComputer = randomNumber(n)
@@ -44,13 +57,10 @@ for (var i=0; i<x; i++){
 var z = n-x; 
 var a = 0;
 while(a<z){
-    
     var newNumberUser = parseInt(prompt("Inserisci un nuovo numero da 1 a 100"));
 
     if(!isNumberInArray(newNumberUser, numeriUtente) && newNumberUser <=100 && newNumberUser >=1 ){
-
         numeriUtente.push(newNumberUser); 
-
         // Se il numero è presente nella lista dei numeri generati, la partita termina
         if(isNumberInArray(newNumberUser, numeriComputer) || a==z){
             alert("Hai perso");
